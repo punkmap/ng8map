@@ -9,7 +9,7 @@ import { AppConfig } from './config/appConfig';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'ng8Map';
+  title = 'ng8map';
   constructor(private appConfigService: AppConfigService) { }
   config: any = AppConfig;
 
