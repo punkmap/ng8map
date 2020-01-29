@@ -19,7 +19,15 @@ export class MapviewComponent implements OnInit, OnDestroy {
     try {
 
       // Load the modules for the ArcGIS API for JavaScript
-      const [Map, MapView, FeatureLayer] = await loadModules(['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer']);
+      const [Map,
+              MapView,
+              FeatureLayer,
+              BasemapGallery] = await loadModules([
+                'esri/Map',
+                'esri/views/MapView',
+                'esri/layers/FeatureLayer',
+                'esri/widgets/BasemapGallery'
+              ]);
       this.config = this.appConfigService.getConfig();
       console.log('CONFIG2: ', this.config);
       // Configure the Map
@@ -36,15 +44,12 @@ export class MapviewComponent implements OnInit, OnDestroy {
         zoom: this.config.map.zoom,
         map
       };
-      this.config.map.layers.forEach(layer => {
-        map.add(new FeatureLayer({
-          url: layer.url,
-          id: layer.id,
-          label: layer.label,
-        }));
-      });
+      this.addLayers(map, FeatureLayer);
       this.view = new MapView(mapViewProperties);
-
+      // Add the widget to the top-right corner of the view
+      this.view.ui.add(this.addBasemapGallery(BasemapGallery), {
+        position: 'top-right'
+      });
       return this.view;
     } catch (error) {
       console.log('EsriLoader: ', error);
@@ -54,7 +59,25 @@ export class MapviewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.initializeMap();
   }
+  addLayers(map, FeatureLayer) {
+    this.config.map.layers.forEach(layer => {
+      map.add(new FeatureLayer({
+        url: layer.url,
+        id: layer.id,
+        label: layer.label,
+      }));
+    });
+  }
+  addBasemapGallery(BasemapGallery) {
+    return new BasemapGallery({
+      view: this.view
+    });
 
+    // // Add the widget to the top-right corner of the view
+    // this.view.ui.add(basemapGallery, {
+    //   position: "top-right"
+    // });
+  }
   ngOnDestroy() {
     if (this.view) {
       // destroy the map view
