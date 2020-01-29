@@ -14,7 +14,6 @@ export class AppComponent implements OnInit {
   config: any = AppConfig;
 
   ngOnInit() {
-    console.log('CONFIG', this.config);
     this.appConfigService.setConfig(this.config);
   }
 }

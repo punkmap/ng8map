@@ -18,10 +18,8 @@ export class MapviewComponent implements OnInit, OnDestroy {
   async initializeMap() {
     try {
 
-      console.log('mapViewEl: ', this.mapViewEl);
-      console.log('mapView initializeMap 1');
       // Load the modules for the ArcGIS API for JavaScript
-      const [Map, MapView] = await loadModules(['esri/Map', 'esri/views/MapView']);
+      const [Map, MapView, FeatureLayer] = await loadModules(['esri/Map', 'esri/views/MapView', 'esri/layers/FeatureLayer']);
       this.config = this.appConfigService.getConfig();
       console.log('CONFIG2: ', this.config);
       // Configure the Map
@@ -38,7 +36,13 @@ export class MapviewComponent implements OnInit, OnDestroy {
         zoom: this.config.map.zoom,
         map
       };
-
+      this.config.map.layers.forEach(layer => {
+        map.add(new FeatureLayer({
+          url: layer.url,
+          id: layer.id,
+          label: layer.label,
+        }));
+      });
       this.view = new MapView(mapViewProperties);
 
       return this.view;
