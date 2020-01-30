@@ -47,9 +47,9 @@ export class MapviewComponent implements OnInit, OnDestroy {
       this.addLayers(map, FeatureLayer);
       this.view = new MapView(mapViewProperties);
       // Add the widget to the top-right corner of the view
-      this.view.ui.add(this.addBasemapGallery(BasemapGallery), {
-        position: 'top-right'
-      });
+      // this.view.ui.add(this.addBasemapGallery(BasemapGallery), {
+      //   position: 'top-right'
+      // });
       return this.view;
     } catch (error) {
       console.log('EsriLoader: ', error);

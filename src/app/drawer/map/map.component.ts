@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { loadModules } from 'esri-loader';
 import { AppConfigService } from '../../services/app-config.service';
+import { MapObjectsService } from './map-object.service';
 
 @Component({
   selector: 'app-map',
@@ -12,7 +13,7 @@ export class MapComponent implements OnInit {
   @ViewChild('mapViewNode', { static: true }) private mapViewEl: ElementRef;
   view: any;
   config: any;
-  constructor(private appConfigService: AppConfigService ) {}
+  constructor(private appConfigService: AppConfigService, private mapObjectService: MapObjectsService ) {}
 
   async initializeMap() {
     try {
@@ -45,10 +46,11 @@ export class MapComponent implements OnInit {
       };
       this.addLayers(map, FeatureLayer);
       this.view = new MapView(mapViewProperties);
+      this.mapObjectService.setMapView(this.view);
       // Add the widget to the top-right corner of the view
-      this.view.ui.add(this.addBasemapGallery(BasemapGallery), {
-        position: 'top-right'
-      });
+      // this.view.ui.add(this.addBasemapGallery(BasemapGallery), {
+      //   container: 'searchWidget'
+      // });
       return this.view;
     } catch (error) {
       console.log('EsriLoader: ', error);
