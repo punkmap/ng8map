@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './material';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MapviewComponent } from './mapview/mapview.component';
+import { DrawerComponent } from './drawer/drawer.component';
+import { MapComponent } from './drawer/map/map.component';
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    MapviewComponent
+    MapviewComponent,
+    DrawerComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
