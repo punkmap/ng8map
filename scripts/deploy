@@ -2,6 +2,6 @@ ssh punkmap@64.225.125.231 <<EOF
  cd /var/www/html/sites/ng8map/
  git pull
  npm install
- /usr/local/bin/ng build --base-href /ng8map/
+ /usr/local/bin/ng build
  exit
 EOF
