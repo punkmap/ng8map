@@ -10,6 +10,7 @@ import { MapviewComponent } from './mapview/mapview.component';
 import { DrawerComponent } from './drawer/drawer.component';
 import { MapComponent } from './drawer/map/map.component';
 import { BasemapsComponent } from './drawer/basemaps/basemaps.component';
+import { PopupComponent } from './drawer/map/popup/popup.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { BasemapsComponent } from './drawer/basemaps/basemaps.component';
     MapviewComponent,
     DrawerComponent,
     MapComponent,
-    BasemapsComponent
+    BasemapsComponent,
+    PopupComponent
   ],
   imports: [
     BrowserModule,

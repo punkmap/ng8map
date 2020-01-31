@@ -66,6 +66,7 @@ export class MapComponent implements OnInit {
         url: layer.url,
         id: layer.id,
         label: layer.label,
+        popupTemplate: layer.popupTemplate,
       }));
     });
   }
