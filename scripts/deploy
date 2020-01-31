@@ -1,7 +1,10 @@
 ssh punkmap@64.225.125.231 <<EOF
  cd /var/www/html/sites/ng8map/
+ tee >(logger) <<< "*****GIT PULL START*****"
  git pull
+ tee >(logger) <<< "*****NPM INSTALL START*****"
  npm install
+ tee >(logger) <<< "*****NG BUILD START*****"
  /usr/local/bin/ng build
  exit
 EOF
