@@ -6,5 +6,6 @@ ssh punkmap@64.225.125.231 <<EOF
  npm install
  tee >(logger) <<< "*****NG BUILD START*****"
  /usr/local/bin/ng build
+ tee >(logger) <<< "*****NG BUILD START*****"
  exit
 EOF
