@@ -13,6 +13,7 @@ export class MapComponent implements OnInit {
   @ViewChild('mapViewNode', { static: true }) private mapViewEl: ElementRef;
   view: any;
   config: any;
+  userDefinedZoom = 5;
   constructor(private appConfigService: AppConfigService, private mapObjectService: MapObjectsService ) {}
 
   async initializeMap() {
@@ -22,11 +23,11 @@ export class MapComponent implements OnInit {
       const [Map,
               MapView,
               FeatureLayer,
-              BasemapGallery] = await loadModules([
+              Track] = await loadModules([
                 'esri/Map',
                 'esri/views/MapView',
                 'esri/layers/FeatureLayer',
-                'esri/widgets/BasemapGallery'
+                'esri/widgets/Track'
               ]);
       this.config = this.appConfigService.getConfig();
       console.log('CONFIG2: ', this.config);
@@ -46,7 +47,20 @@ export class MapComponent implements OnInit {
       };
       this.addLayers(map, FeatureLayer);
       this.view = new MapView(mapViewProperties);
-      this.mapObjectService.setMapView(this.view);
+      this.view.when(() => {
+        this.mapObjectService.setMapView(this.view);
+
+        this.view.watch('zoom', (value) => {
+          console.log('zoom watch value: ', value);
+          this.userDefinedZoom = value;
+        });
+
+        const track = new Track({view: this.view});
+        this.view.ui.add(track, 'top-left');
+        track.on('track', function() {
+          this.trackObj.zoomlevel = this.userDefinedZoom;
+        });
+      });
       // Add the widget to the top-right corner of the view
       // this.view.ui.add(this.addBasemapGallery(BasemapGallery), {
       //   container: 'searchWidget'
