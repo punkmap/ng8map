@@ -1,9 +1,15 @@
 <mat-drawer-container class="example-container">
   <mat-drawer #drawer mode="side">
-    <app-basemaps></app-basemaps>
+    <mat-tab-group>
+      <mat-tab label="Basemaps">
+        <app-basemaps></app-basemaps>
+      </mat-tab>
+      <mat-tab label="Layers">
+        <app-layers></app-layers>
+      </mat-tab>
+    </mat-tab-group>
   </mat-drawer>
   <mat-drawer-content>
-
     <app-map></app-map>
   </mat-drawer-content>
 </mat-drawer-container>

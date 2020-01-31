@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BasemapsComponent } from './basemaps.component';
+import { BasemapsComponent } from './basemapsGallery.component';
 
 describe('BasemapsComponent', () => {
   let component: BasemapsComponent;

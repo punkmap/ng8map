@@ -9,8 +9,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MapviewComponent } from './mapview/mapview.component';
 import { DrawerComponent } from './drawer/drawer.component';
 import { MapComponent } from './drawer/map/map.component';
-import { BasemapsComponent } from './drawer/basemaps/basemaps.component';
-import { PopupComponent } from './drawer/map/popup/popup.component';
+import { BasemapsComponent } from './drawer/basemapsGallery/basemapsGallery.component';
+import { LayersComponent } from './drawer/layersList/layersList.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +19,7 @@ import { PopupComponent } from './drawer/map/popup/popup.component';
     DrawerComponent,
     MapComponent,
     BasemapsComponent,
-    PopupComponent
+    LayersComponent
   ],
   imports: [
     BrowserModule,

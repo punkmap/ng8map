@@ -5,8 +5,8 @@ import { MapObjectsService } from '../map/map-object.service';
 
 @Component({
   selector: 'app-basemaps',
-  templateUrl: './basemaps.component.html',
-  styleUrls: ['./basemaps.component.scss']
+  templateUrl: './basemapsGallery.component.html',
+  styleUrls: ['./basemapsGallery.component.scss']
 })
 export class BasemapsComponent implements OnInit {
   @ViewChild('basemaps', { static: true }) private basemapsEl: ElementRef;
@@ -14,24 +14,6 @@ export class BasemapsComponent implements OnInit {
   basemapsGallery;
   constructor(private mapObjectService: MapObjectsService) { }
 
-  async initializeBasemaps(mapView) {
-    try {
-      const [
-        BasemapGallery
-      ] = await loadModules([
-          'esri/widgets/BasemapGallery'
-        ]);
-      // Load the modules for the ArcGIS API for JavaScript
-
-      // console.log(this.mapObjectService.getMapView());
-      console.log('this.mapView: ', this.mapView);
-      this.mapView.ui.add(this.addBasemapGallery(BasemapGallery), {
-        position: 'top-right',
-      });
-    } catch (error) {
-      console.log('EsriLoader: ', error);
-    }
-  }
   addBasemapGallery(BasemapGallery: any) {
 
     return new BasemapGallery({
@@ -76,7 +58,6 @@ export class BasemapsComponent implements OnInit {
       if (mapView) {
         this.mapView = mapView;
         this.loadBaseMapGallery();
-        // this.initializeBasemaps(mapView);
       }
     });
   }
