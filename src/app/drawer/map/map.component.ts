@@ -55,6 +55,7 @@ export class MapComponent implements OnInit {
           this.userDefinedZoom = value;
         });
 
+        //TODO: Add track to toolSetup function that links to the config
         const track = new Track({view: this.view});
         this.view.ui.add(track, 'top-left');
         track.on('track', function() {
