@@ -10,6 +10,7 @@ import { DrawerComponent } from './drawer/drawer.component';
 import { MapComponent } from './drawer/map/map.component';
 import { BasemapsComponent } from './drawer/basemapsGallery/basemapsGallery.component';
 import { LayersComponent } from './drawer/layersList/layersList.component';
+import { EsriMapComponent } from "./esri-map/esri-map.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +18,8 @@ import { LayersComponent } from './drawer/layersList/layersList.component';
     DrawerComponent,
     MapComponent,
     BasemapsComponent,
-    LayersComponent
+    LayersComponent,
+    EsriMapComponent
   ],
   imports: [
     BrowserModule,

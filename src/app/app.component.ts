@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   constructor(private appConfigService: AppConfigService) { }
   config: any = AppConfig;
 
+
   ngOnInit() {
     this.appConfigService.setConfig(this.config);
   }
