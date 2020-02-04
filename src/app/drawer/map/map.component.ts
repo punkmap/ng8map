@@ -14,7 +14,7 @@ export class MapComponent implements OnInit {
   view: any;
   config: any;
   trackObj: any;
-  userDefinedZoom = 5;
+  userDefinedScale: number;
   constructor(private appConfigService: AppConfigService, private mapObjectService: MapObjectsService ) {}
 
   async initializeMap() {
@@ -30,6 +30,7 @@ export class MapComponent implements OnInit {
                 'esri/layers/FeatureLayer',
                 'esri/widgets/Track'
               ]);
+      const self = this;
       this.config = this.appConfigService.getConfig();
       console.log('CONFIG2: ', this.config);
       // Configure the Map
@@ -52,18 +53,19 @@ export class MapComponent implements OnInit {
         this.mapObjectService.setMapView(this.view);
 
         this.view.watch('zoom', (value) => {
-          console.log('zoom watch value: ', value);
-          this.userDefinedZoom = value;
-          console.log('UDF: ', this.userDefinedZoom);
+          this.userDefinedScale = this.view.scale;
+          console.log("this.view.scale: ", this.view.scale);
         });
 
         //TODO: Add track to toolSetup function that links to the config
         this.trackObj = new Track({view: this.view});
         this.view.ui.add(this.trackObj, 'top-left');
         this.trackObj.on('track', function() {
-          console.log('this.trackObj: ', this.trackObj);
-          this.trackObj.zoomlevel = this.userDefinedZoom;
-        });
+          console.log('onTrack');
+          console.log('this.trackObj.scale: ', this.scale);
+          this.scale = self.userDefinedScale;
+          console.log('this.trackObj.scale 2: ', this.scale);
+        }).bind(this);
       });
       // Add the widget to the top-right corner of the view
       // this.view.ui.add(this.addBasemapGallery(BasemapGallery), {
