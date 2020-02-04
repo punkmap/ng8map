@@ -4,12 +4,12 @@ export const AppConfig = {
     zoom: 12,
     layers: [
       {
-        label: 'Durham Trails',
-        id: 'trails',
-        url: 'https://webgis.durhamnc.gov/server/rest/services/PublicServices/Community/MapServer/6',
+        label: 'Parks',
+        id: 'parks',
+        url: 'https://webgis.durhamnc.gov/server/rest/services/PublicServices/Community/MapServer/8',
         popupTemplate: {
           // autocasts as new PopupTemplate()
-          title: '{SYSTEMNAME}',
+          title: '{NAME}',
           content: [
             {
               // It is also possible to set the fieldInfos outside of the content
@@ -18,7 +18,7 @@ export const AppConfig = {
               type: 'fields',
               fieldInfos: [
                 {
-                  fieldName: 'NAME',
+                  fieldName: 'PARKURL',
                   label: '<b>Name</b>'
                 },
                 {
@@ -47,12 +47,12 @@ export const AppConfig = {
         }
       },
       {
-        label: 'Parks',
-        id: 'parks',
-        url: 'https://webgis.durhamnc.gov/server/rest/services/PublicServices/Community/MapServer/8',
+        label: 'Durham Trails',
+        id: 'trails',
+        url: 'https://webgis.durhamnc.gov/server/rest/services/PublicServices/Community/MapServer/6',
         popupTemplate: {
           // autocasts as new PopupTemplate()
-          title: '{NAME}',
+          title: '{SYSTEMNAME}',
           content: [
             {
               // It is also possible to set the fieldInfos outside of the content
@@ -61,7 +61,7 @@ export const AppConfig = {
               type: 'fields',
               fieldInfos: [
                 {
-                  fieldName: 'PARKURL',
+                  fieldName: 'NAME',
                   label: '<b>Name</b>'
                 },
                 {
