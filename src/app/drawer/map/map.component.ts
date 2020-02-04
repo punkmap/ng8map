@@ -13,6 +13,7 @@ export class MapComponent implements OnInit {
   @ViewChild('mapViewNode', { static: true }) private mapViewEl: ElementRef;
   view: any;
   config: any;
+  trackObj: any;
   userDefinedZoom = 5;
   constructor(private appConfigService: AppConfigService, private mapObjectService: MapObjectsService ) {}
 
@@ -53,12 +54,14 @@ export class MapComponent implements OnInit {
         this.view.watch('zoom', (value) => {
           console.log('zoom watch value: ', value);
           this.userDefinedZoom = value;
+          console.log('UDF: ', this.userDefinedZoom);
         });
 
         //TODO: Add track to toolSetup function that links to the config
-        const track = new Track({view: this.view});
-        this.view.ui.add(track, 'top-left');
-        track.on('track', function() {
+        this.trackObj = new Track({view: this.view});
+        this.view.ui.add(this.trackObj, 'top-left');
+        this.trackObj.on('track', function() {
+          console.log('this.trackObj: ', this.trackObj);
           this.trackObj.zoomlevel = this.userDefinedZoom;
         });
       });
