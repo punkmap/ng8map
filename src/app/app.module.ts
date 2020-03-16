@@ -11,6 +11,7 @@ import { DrawerComponent } from "./drawer/drawer.component";
 import { MapComponent } from "./drawer/map/map.component";
 import { BasemapsComponent } from "./drawer/basemapsGallery/basemapsGallery.component";
 import { LayersComponent } from "./drawer/layersList/layersList.component";
+import {MatIconModule} from '@angular/material/icon';
 //import { EsriMapComponent } from "./esri-map/esri-map.component";
 @NgModule({
   declarations: [AppComponent,
@@ -20,7 +21,8 @@ import { LayersComponent } from "./drawer/layersList/layersList.component";
     BasemapsComponent,
     LayersComponent],
   imports: [BrowserModule,
-    MaterialModule
+    MaterialModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

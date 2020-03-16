@@ -1,8 +1,10 @@
   <mat-toolbar color="primary">
     <span>Application Title</span>
-    <button mat-raised-button (click)="navbarSideMenuSelect()">Toggle drawer</button>
+
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
 
-    <span>Right Aligned Text</span>
+    <button mat-raised-button (click)="navbarSideMenuSelect()">
+      <mat-icon>menu_open</mat-icon>
+    </button>
   </mat-toolbar>
