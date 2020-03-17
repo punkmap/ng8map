@@ -3,8 +3,10 @@
 
     <!-- This fills the remaining space of the current row -->
     <span class="example-fill-remaining-space"></span>
-
-    <button mat-raised-button (click)="navbarSideMenuSelect()">
-      <mat-icon class="mat-icon-rtl-mirror">menu_open</mat-icon>
+    <button mat-fab (click)="navbarSideMenuSelect()">
+      <mat-icon class="mat-icon-rtl-mirror" direction='mat-icon-ltr-mirror' *ngIf="!toggleState; else exitMenu">chrome_reader_mode</mat-icon>
+      <ng-template #exitMenu>
+        <mat-icon class="mat-icon-rtl-mirror" direction='mat-icon-ltr-mirror' >label_important</mat-icon>
+      </ng-template>
     </button>
   </mat-toolbar>
